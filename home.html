@@ -3,7 +3,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <title>Centered Container</title>
+  <title>Pool made easy by Snuka</title>
   <style>
     body {
       display: flex;
@@ -29,7 +29,7 @@
     .display-board{
       width: 310px;
       height: 18vh;
-      border: 1px solid black;
+      box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.3);
       border-radius: 7px;
       display: flex;
       flex-direction: column;
@@ -47,9 +47,10 @@
       border: none;
       font-size: 24px;
       cursor: pointer;
+      color: rgb(5, 214, 5);
     }
     #right-button:hover{
-      color: darkgreen;
+      color: rgb(4, 94, 4);
     }
     .top-section{
       width: 305px;
@@ -57,7 +58,7 @@
     }
     
     #display-players{
-      border: 1px solid black;
+      border: 1px solid #ccc;
       width: 200px;
       font-size: 18px;
       font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -66,14 +67,14 @@
       width: 305px;
       height: 9vh;
       display: flex;
-      border: 1px solid black;
+      border: 1px solid #ccc;
     }
     
     .display-box{
       
       flex: 1;
       width: 50px;
-      border: 1px solid black;
+      border: 1px solid #ccc;
       margin: 5px;
       border-radius: 5px;
 
@@ -125,29 +126,39 @@
     }
     .red {
       background-color: red;
+      color: whitesmoke;
     }
 
     .blue {
       background-color: blue;
+      color: whitesmoke;
     }
 
     .green {
       background-color: green;
+      color: whitesmoke;
     }
 
     .yellow {
       background-color: yellow;
     }
     .red {
-      background-color: red;
+      background-color: darkred;
+      color: whitesmoke;
+    }
+    .red3 {
+      background-color: rgb(255, 59, 59);
+      color: whitesmoke;
     }
 
     .blue {
       background-color: blue;
+      color: whitesmoke;
     }
 
     .green {
       background-color: green;
+      color: whitesmoke;
     }
 
     .yellow {
@@ -159,6 +170,19 @@
     }
     .maroon {
       background-color: maroon;
+      color: whitesmoke;
+    }
+    .maroon7 {
+      background-color: rgb(173, 14, 14);
+      color: whitesmoke;
+    }
+    .purple {
+      background-color: purple;
+      color: whitesmoke;
+    }
+    .lightred {
+      background-color: rgb(253, 4, 4);
+      color: whitesmoke;
     }
     
     .sideplace{
@@ -228,11 +252,21 @@
       padding: 5px;
       text-align: center;
       position: fixed;
-      top: 93vh;
+      top: 90vh;
       bottom: 0;
 
     }
+    .social-icons {
+      display: flex;
+      flex-direction: row;
+      height: 10vh;
+    }
 
+    .social-icons a i {
+      width: 70px;
+      height: 70px;
+      cursor: pointer;
+    }
     #myPopup {
       height: 70vh;
       margin-top: 5px;
@@ -341,7 +375,7 @@
             <button class="sphere blue" type="button" value="1" onclick="displayresults('17')">2</button>
           </div>
           <div class="fixed-ball">
-            <button class="sphere red" type="button" value="1" onclick="displayresults('6')">3</button>
+            <button class="sphere red3" type="button" value="1" onclick="displayresults('6')">3</button>
           </div>
           <div class="fixed-ball">
             <button class="sphere purple" type="button" value="1" onclick="displayresults('4')">4</button>
@@ -350,13 +384,13 @@
       
       <div class="row">
         <div class="fixed-ball">
-          <button class="sphere" type="button" value="1" onclick="displayresults('5')">5</button>
+          <button class="sphere lightred" type="button" value="1" onclick="displayresults('5')">5</button>
         </div>
         <div class="fixed-ball">
           <button class="sphere green" type="button" value="1" onclick="displayresults('6')">6</button>
         </div>
         <div class="fixed-ball">
-          <button class="sphere maroon" type="button" value="1" onclick="displayresults('7')">7</button>
+          <button class="sphere maroon7" type="button" value="1" onclick="displayresults('7')">7</button>
         </div>
         <div class="fixed-ball">
           <button class="sphere black" type="button" value="1" onclick="displayresults('8')">8</button>
@@ -365,25 +399,25 @@
       
         <div class="row">
           <div class="fixed-ball">
-            <button class="sphere" type="button" value="1" onclick="displayresults('9')">9</button>
+            <button class="sphere yellow" type="button" value="1" onclick="displayresults('9')">9</button>
           </div>
           <div class="fixed-ball">
             <button class="sphere blue" type="button" value="1" onclick="displayresults('10')">10</button>
           </div>
           <div class="fixed-ball">
-            <button class="sphere red" type="button" value="1" onclick="displayresults('11')">11</button>
+            <button class="sphere red3" type="button" value="1" onclick="displayresults('11')">11</button>
           </div>
           <div class="fixed-ball">
-            <button class="sphere" type="button" value="1" onclick="displayresults('12')">12</button>
+            <button class="sphere purple" type="button" value="1" onclick="displayresults('12')">12</button>
           </div>
       </div>
       
       <div class="row">
         <div class="fixed-ball">
-          <button class="sphere" type="button" value="1" onclick="displayresults('13')">13</button>
+          <button class="sphere lightred" type="button" value="1" onclick="displayresults('13')">13</button>
         </div>
         <div class="fixed-ball">
-          <button class="sphere" type="button" value="1" onclick="displayresults('14')">14</button>
+          <button class="sphere green" type="button" value="1" onclick="displayresults('14')">14</button>
         </div>
         <div class="fixed-ball">
           <button class="sphere maroon" type="button" value="1" onclick="displayresults('15')">15</button>
@@ -613,7 +647,12 @@
       }
     </script>
     <footer>
-      <p>&copy; 2023 Snuka.com. All rights reserved.</p>
+      <div class="social-icons">
+        <a href="https://twitter.com/your_account_link" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.tiktok.com/@your_account_link" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://www.facebook.com/your_account_link" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/your_account_link" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
     </footer>
     
   <script src="script.js"></script>
