@@ -80,7 +80,7 @@
       border-radius: 5px;
 
     }
-    .numberDisplay{
+    #numberDisplay{
       flex:2;
       width: 100px;
       margin: 5px;
@@ -361,67 +361,67 @@
       </div>
       <div class="lower-section">
         <div class="display-box">
-          <input class="display-box" type="text" id="result" disabled />  
+          <input class="display-box" type="text" value="" id="result" disabled />  
         </div>
-        <div class="numberDisplay"></div>
+        <div id="numberDisplay" > </div>
       </div>
     </section>
     <div class="balls">
       <div class="container">
         <div class="row">
           <div class="fixed-ball">
-            <button class="sphere yellow" type="button" value="1" onclick="displayresults('16')">1 </button>
+            <button class="sphere yellow" type="button" value="16" onclick="displayresults('16')">1 </button>
           </div>
           <div class="fixed-ball">
-            <button class="sphere blue" type="button" value="1" onclick="displayresults('17')">2</button>
+            <button class="sphere blue" type="button" value="17" onclick="displayresults('17')">2</button>
           </div>
           <div class="fixed-ball">
-            <button class="sphere red3" type="button" value="1" onclick="displayresults('6')">3</button>
+            <button class="sphere red3" type="button" value="3" onclick="displayresults('6')">3</button>
           </div>
           <div class="fixed-ball">
-            <button class="sphere purple" type="button" value="1" onclick="displayresults('4')">4</button>
+            <button class="sphere purple" type="button" value="4" onclick="displayresults('4')">4</button>
           </div>
       </div>
       
       <div class="row">
         <div class="fixed-ball">
-          <button class="sphere lightred" type="button" value="1" onclick="displayresults('5')">5</button>
+          <button class="sphere lightred" type="button" value="5" onclick="displayresults('5')">5</button>
         </div>
         <div class="fixed-ball">
-          <button class="sphere green" type="button" value="1" onclick="displayresults('6')">6</button>
+          <button class="sphere green" type="button" value="6" onclick="displayresults('6')">6</button>
         </div>
         <div class="fixed-ball">
-          <button class="sphere maroon7" type="button" value="1" onclick="displayresults('7')">7</button>
+          <button class="sphere maroon7" type="button" value="7" onclick="displayresults('7')">7</button>
         </div>
         <div class="fixed-ball">
-          <button class="sphere black" type="button" value="1" onclick="displayresults('8')">8</button>
+          <button class="sphere black" type="button" value="8" onclick="displayresults('8')">8</button>
         </div>
       </div>
       
         <div class="row">
           <div class="fixed-ball">
-            <button class="sphere yellow" type="button" value="1" onclick="displayresults('9')">9</button>
+            <button class="sphere yellow" type="button" value="9" onclick="displayresults('9')">9</button>
           </div>
           <div class="fixed-ball">
-            <button class="sphere blue" type="button" value="1" onclick="displayresults('10')">10</button>
+            <button class="sphere blue" type="button" value="10" onclick="displayresults('10')">10</button>
           </div>
           <div class="fixed-ball">
-            <button class="sphere red3" type="button" value="1" onclick="displayresults('11')">11</button>
+            <button class="sphere red3" type="button" value="11" onclick="displayresults('11')">11</button>
           </div>
           <div class="fixed-ball">
-            <button class="sphere purple" type="button" value="1" onclick="displayresults('12')">12</button>
+            <button class="sphere purple" type="button" value="12" onclick="displayresults('12')">12</button>
           </div>
       </div>
       
       <div class="row">
         <div class="fixed-ball">
-          <button class="sphere lightred" type="button" value="1" onclick="displayresults('13')">13</button>
+          <button class="sphere lightred" type="button" value="13" onclick="displayresults('13')">13</button>
         </div>
         <div class="fixed-ball">
-          <button class="sphere green" type="button" value="1" onclick="displayresults('14')">14</button>
+          <button class="sphere green" type="button" value="14" onclick="displayresults('14')">14</button>
         </div>
         <div class="fixed-ball">
-          <button class="sphere maroon" type="button" value="1" onclick="displayresults('15')">15</button>
+          <button class="sphere maroon" type="button" value="15" onclick="displayresults('15')">15</button>
         </div>
         <div class="fixed-ball">
           <button class="sphere" type="button" value="1">Undo</button>
@@ -430,10 +430,10 @@
     </div>
       <div class="sideplace">
         <div class="oparatus add-icon">
-          <div class="plus fas fa-plus" type="button" id="addScore" onclick="display('+')"></div>
+          <div class="plus fas fa-plus" type="button" id="addScore"></div>
         </div>
         <div class="oparatus deduct-icon">
-          <div class="minus fas fa-minus" type="button" type="button" id="decrementScore" onclick="display('-')"></div>
+          <div class="minus fas fa-minus" type="button" type="button" id="decrementScore"></div>
         </div>
         <div class="oparatus delete-item">
           <div class="plus fas fa-trash-alt" type="button" value="=" onclick="calculate()" id="btn"></div>
@@ -466,7 +466,77 @@
     </div>
   </main>
   
-  <script>
+  <script>// Get all the sphere buttons
+// Get all the sphere buttons
+var spheabtns = document.getElementsByClassName("sphere");
+
+// Variable to store temporarily selected value
+var tempValue = "";
+
+// Add event listeners to each sphere button
+for (var i = 0; i < spheabtns.length; i++) {
+  spheabtns[i].addEventListener("click", function() {
+    // Get the value of the clicked button
+    tempValue = this.value;
+  });
+}
+
+// Get the addScore and decrementScore buttons
+var addScoreButton = document.getElementById("addScore");
+var decrementScoreButton = document.getElementById("decrementScore");
+
+// Add event listener to the addScore button
+addScoreButton.addEventListener("click", function() {
+  // Get the numberDisplay element
+  var numberDisplay = document.getElementById("numberDisplay");
+
+  // Create a new span element for the new value
+  var newValue = document.createElement("span");
+  newValue.innerText = tempValue;
+  newValue.style.color = "green";
+
+  // Check if there are existing values
+  if (numberDisplay.children.length > 0) {
+    // Add a comma before the new value
+    var comma = document.createElement("span");
+    comma.innerText = ", ";
+    numberDisplay.appendChild(comma);
+  }
+
+  // Append the new value to the numberDisplay element
+  numberDisplay.appendChild(newValue);
+
+  // Reset the temporarily saved value
+  tempValue = "";
+});
+
+// Add event listener to the decrementScore button
+decrementScoreButton.addEventListener("click", function() {
+  // Get the numberDisplay element
+  var numberDisplay = document.getElementById("numberDisplay");
+
+  // Create a new span element for the new value
+  var newValue = document.createElement("span");
+  newValue.innerText = tempValue;
+  newValue.style.color = "red";
+
+  // Check if there are existing values
+  if (numberDisplay.children.length > 0) {
+    // Add a comma before the new value
+    var comma = document.createElement("span");
+    comma.innerText = ", ";
+    numberDisplay.appendChild(comma);
+  }
+
+  // Append the new value to the numberDisplay element
+  numberDisplay.appendChild(newValue);
+
+  // Reset the temporarily saved value
+  tempValue = "";
+});
+
+
+
         function displayresults(value) {
           document.getElementById("result").value += value;
         }
@@ -476,7 +546,9 @@
           var p = document.getElementById("result").value;
           var q = eval(p);
           document.getElementById("result").value = q;
+
         }
+
         // This function clear all the values
         function clearScreen() {
           document.getElementById("result").value = "";
@@ -656,6 +728,5 @@
       </div>
     </footer>
     
-  <script src="script.js"></script>
 </body>
 </html>
