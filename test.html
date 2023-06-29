@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <title>Pool made easy by Snuka</title>
+  <style>
+    .blurred {
+  filter: blur(5px);
+}
+
+  </style>
+</head>
+  <body>
+    <button id="button1" onclick="toggleBlur(this)">Button 1</button>
+    <button id="button2" onclick="toggleBlur(this)">Button 2</button>
+    <button id="button3" onclick="toggleBlur(this)">Button 3</button>
+
+    <script>
+      // Function to toggle the blur effect and save the state
+function toggleBlur(button) {
+  button.classList.toggle("blurred");
+  saveButtonStates();
+}
+
+// Function to save the button states in local storage
+function saveButtonStates() {
+  var buttonStates = {};
+  var buttons = document.getElementsByTagName("button");
+  for (var i = 0; i < buttons.length; i++) {
+    var button = buttons[i];
+    buttonStates[button.id] = button.classList.contains("blurred");
+  }
+  localStorage.setItem("buttonStates", JSON.stringify(buttonStates));
+}
+
+// Function to save the button states in local storage retrieve and apply the button states from local storage
+function applyButtonStates() {
+  var buttonStates = localStorage.getItem("buttonStates");
+  if (buttonStates) {
+    buttonStates = JSON.parse(buttonStates);
+    Object.keys(buttonStates).forEach(function (buttonId) {
+      var button = document.getElementById(buttonId);
+      if (buttonStates[buttonId]) {
+        button.classList.add("blurred");
+      }
+    });
+  }
+}
+
+// Apply the button states when the page loads
+applyButtonStates();
+
+    </script>
+  </body>
+
+</html>
